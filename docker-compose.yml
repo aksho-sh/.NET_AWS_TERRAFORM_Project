@@ -1,0 +1,13 @@
+services:
+  dot-net-app:
+    build: 
+      context: ./dotnet-web-api
+      dockerfile: dockerfile
+    container_name: dotnet-web-api
+    ports: 
+      - "5000:5000"
+    volumes: 
+      - ./dotnet-web-api:/app
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    command: ["dotnet", "watch", "run", "--no-launch-profile"]
